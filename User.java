@@ -41,7 +41,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.userName = userName;
-    }
+    
 
     public void setGeneralInformation(String firstName, String lastName, String gender, String studentIdentifierNumber) throws Exception {
         throws IllegalArgumentException {
@@ -92,35 +92,5 @@ public class User {
             throw new Exception("Input is not valid.");
         }
 
-        boolean isValidEmail = isValidEmail(email);
-        boolean isStrongPassword = isStrongPassword(password);
-
-        this.setSchoolIdentifier(programStudy, faculty, enrollmentYear);
-        this.setSchoolAccount(email, password, userName);
-        this.setGeneralInformation(firstName, lastName, gender, studentIdentifierNumber);
-        int calculateYear = this.calculateEnrollmentYear();
-
-        String emailStatus = "", passwordStatus = "";
-
-        if(isValidEmail){
-            emailStatus = "VALID";
-        }else{
-            emailStatus = "INVALID";
+      
         }
-        if(isStrongPassword){
-            passwordStatus = "STRONG";
-        }else{
-            passwordStatus = "WEAK";
-        }
-
-        if(emailStatus.equals("VALID") && passwordStatus.equals("STRONG")){
-            System.out.println("UPDATE COMPLETE!");
-        }else if(emailStatus.equals("VALID") && passwordStatus.equals("WEAK")){
-            System.out.println("PLEASE USE BETTER PASSWORD");
-        }else if(emailStatus.equals("INVALID") && passwordStatus.equals("STRONG")){
-            System.out.println("PLEASE CHECK YOUR EMAIL");
-        }else if(emailStatus.equals("INVALID") && passwordStatus.equals("WEAK")){
-            System.out.println("THIS IS JOKE RIGHT? PLEASE USE VALID EMAIL AND STRONG PASSWORD");
-        }
-    }
-}
