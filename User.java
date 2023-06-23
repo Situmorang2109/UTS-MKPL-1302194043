@@ -8,23 +8,8 @@ import java.util.regex.Pattern;
 
 // Signature: DHF
 public class User {
-    // This is user's ID index
-    private final String userID;
-    // This is user's school identifier
-    private String programStudy;
-    private String faculty;
+
     private int enrollmentYear;
-
-    // This is user's account
-    private String email;
-    private String password;
-    private String userName;
-
-    // This is user's general information
-    private String gender;
-    private String firstName;
-    private String lastName;
-    private String studentIdentifierNumber;
 
     // This is class's constructor
     public User() {
