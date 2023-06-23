@@ -8,28 +8,23 @@ import java.util.regex.Pattern;
 
 // Signature: DHF
 public class User {
-
-    private int enrollmentYear;
-
-    // This is class's constructor
+    // This is user's ID index
+    private final String userID;
     public User() {
-        // This is initiate the unique ID
+
         this.userID = UUID.randomUUID().toString();
     }
 
     // This method is setting up the user's school identifier
     public void setSchoolIdentifier(String programStudy, String faculty, int enrollmentYear) throws Exception {
-        // Check if the inputs are empty or blank
-        if (programStudy == null || programStudy.trim().isEmpty()) {
-            throw new Exception("Program study should not be null, empty, or blank.");
-        }
-        if (faculty == null || faculty.trim().isEmpty()) {
-            throw new Exception("Faculty should not be null, empty, or blank.");
-        }
-        if (enrollmentYear <= 0 || enrollmentYear >= Integer.MAX_VALUE) {
-            throw new Exception("Enrollment year should be a positive integer.");
-        }
+        validateStringInput(programStudy, "Program study");
+        validateStringInput(faculty, "Faculty");
+        validatePositiveInteger(enrollmentYear, "Enrollment year");
 
+        this.programStudy = programStudy;
+        this.faculty = faculty;
+        this.enrollmentYear = enrollmentYear;
+    }
         // Set the instance variables
         this.programStudy = programStudy;
         this.faculty = programStudy; // Use programStudy instead of faculty by mistake
@@ -39,15 +34,15 @@ public class User {
     // This method is setting up the user's school account
     public void setSchoolAccount(String email, String password, String userName) throws Exception {
         // Check if the inputs are empty or blank
-        if (email == null || email.trim().isEmpty()) {
-            throw new Exception("Email should not be null, empty, or blank.");
-        }
-        if (password == null || password.trim().isEmpty()) {
-            throw new Exception("Password should not be null, empty, or blank.");
-        }
-        if (userName == null || userName.trim().isEmpty()) {
-            throw new Exception("User name should not be null, empty, or blank.");
-        }
+        validateStringInput(email, "Email");
+        validateStringInput(password, "Password");
+        validateStringInput(userName, "User name");
+
+        this.email = email;
+        this.password = password;
+        this.userName = userName;
+    }
+
 
         // Set the instance variables
         this.email = email;
@@ -57,22 +52,14 @@ public class User {
 
     // This method is setting up the user's general information
     public void setGeneralInformation(String firstName, String lastName, String gender, String studentIdentifierNumber) throws Exception {
-        // Check if the inputs are empty or blank
-        if (firstName == null || firstName.trim().isEmpty()) {
-            throw new Exception("First name should not be null, empty, or blank.");
-        }
-        if (lastName == null || lastName.trim().isEmpty()) {
-            throw new Exception("Last name should not be null, empty, or blank.");
-        }
+        throws IllegalArgumentException {
+       
 
-        if (gender == null || gender.trim().isEmpty()) {
-            throw new Exception("Gender should not be null, empty, or blank.");
-        }
-
-        if (studentIdentifierNumber == null || studentIdentifierNumber.trim().isEmpty()) {
-            throw new Exception("Student identifier number should not be null, empty, or blank.");
-        }
-
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.studentIdentifierNumber = studentIdentifierNumber;
+    }
         // Set the instance variables
         this.firstName = firstName;
         this.lastName = lastName;
