@@ -1,7 +1,5 @@
 package org.telkom.university.code.smell;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.time.Year;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -63,26 +61,6 @@ public class User {
         return currentYears - this.enrollmentYear;
     }
 
-    public boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
-
-        Pattern pat = Pattern.compile(emailRegex);
-        if (email == null)
-            return false;
-        return pat.matcher(email).matches();
-    }
-
-    public boolean isStrongPassword(String password) {
-        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-
-        Pattern pat = Pattern.compile(passwordRegex);
-        if (password == null)
-            return false;
-        return pat.matcher(password).matches();
-    }
 
     public void updateProfile(String firstName, String lastName, String gender, String studentIdentifierNumber,
                               String programStudy, String faculty, int enrollmentYear, String email,
