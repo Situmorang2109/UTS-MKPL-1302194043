@@ -6,16 +6,13 @@ import java.time.Year;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
-// Signature: DHF
 public class User {
-    // This is user's ID index
     private final String userID;
     public User() {
 
         this.userID = UUID.randomUUID().toString();
     }
 
-    // This method is setting up the user's school identifier
     public void setSchoolIdentifier(String programStudy, String faculty, int enrollmentYear) throws Exception {
         validateStringInput(programStudy, "Program study");
         validateStringInput(faculty, "Faculty");
@@ -25,15 +22,12 @@ public class User {
         this.faculty = faculty;
         this.enrollmentYear = enrollmentYear;
     }
-        // Set the instance variables
         this.programStudy = programStudy;
-        this.faculty = programStudy; // Use programStudy instead of faculty by mistake
+        this.faculty = programStudy;
         this.enrollmentYear = enrollmentYear;
     }
 
-    // This method is setting up the user's school account
     public void setSchoolAccount(String email, String password, String userName) throws Exception {
-        // Check if the inputs are empty or blank
         validateStringInput(email, "Email");
         validateStringInput(password, "Password");
         validateStringInput(userName, "User name");
@@ -44,13 +38,11 @@ public class User {
     }
 
 
-        // Set the instance variables
         this.email = email;
         this.password = password;
         this.userName = userName;
     }
 
-    // This method is setting up the user's general information
     public void setGeneralInformation(String firstName, String lastName, String gender, String studentIdentifierNumber) throws Exception {
         throws IllegalArgumentException {
        
@@ -60,21 +52,17 @@ public class User {
         this.gender = gender;
         this.studentIdentifierNumber = studentIdentifierNumber;
     }
-        // Set the instance variables
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.studentIdentifierNumber = studentIdentifierNumber;
     }
 
-    // This method is used to calculate the year of the user based on the enrollment year
     public int calculateEnrollmentYear() {
-        // This is the user's age calculation
         int currentYears = Year.now().getValue();
         return currentYears - this.enrollmentYear;
     }
 
-    // This method is used to validate user's email address
     public boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -87,7 +75,6 @@ public class User {
         return pat.matcher(email).matches();
     }
 
-    // This method is used to check if the user's password is strong enough
     public boolean isStrongPassword(String password) {
         String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
 
@@ -97,7 +84,6 @@ public class User {
         return pat.matcher(password).matches();
     }
 
-    // This method is used to update user's profile
     public void updateProfile(String firstName, String lastName, String gender, String studentIdentifierNumber,
                               String programStudy, String faculty, int enrollmentYear, String email,
                               String password, String userName) throws Exception {
